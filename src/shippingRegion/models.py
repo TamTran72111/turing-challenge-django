@@ -1,3 +1,5 @@
 from django.db import models
 
-# Create your models here.
+
+class ShippingRegion(models.Model):
+    shipping_region = models.CharField(max_length=100)

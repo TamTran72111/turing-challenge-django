@@ -37,6 +37,23 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'department.apps.DepartmentConfig',
+    'category.apps.CategoryConfig',
+    'product.apps.ProductConfig',
+    'productCategory.apps.ProductcategoryConfig',
+    'attribute.apps.AttributeConfig',
+    'attributeValue.apps.AttributevalueConfig',
+    'productAttribute.apps.ProductattributeConfig',
+    'shoppingCart.apps.ShoppingcartConfig',
+    'orders.apps.OrdersConfig',
+    'orderDetail.apps.OrderdetailConfig',
+    'shippingRegion.apps.ShippingregionConfig',
+    'customer.apps.CustomerConfig',
+    'tax.apps.TaxConfig',
+    'shipping.apps.ShippingConfig',
+    'audit.apps.AuditConfig',
+    'review.apps.ReviewConfig',
 ]
 
 MIDDLEWARE = [
@@ -118,3 +135,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+AUTH_USER_MODEL = "customer.Customer"

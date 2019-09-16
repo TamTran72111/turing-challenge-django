@@ -1,3 +1,10 @@
 from django.db import models
 
-# Create your models here.
+from orders.models import Orders
+
+
+class Audit(models.Model):
+    order = models.ForeignKey(Orders, on_delete=models.CASCADE)
+    created_on = models.DateTimeField(auto_now_add=True)
+    message = models.TextField()
+    code = models.IntegerField()
