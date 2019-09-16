@@ -1,15 +1,9 @@
-from django.shortcuts import render
-from rest_framework.generics import RetrieveAPIView, ListAPIView
+from rest_framework.viewsets import ReadOnlyModelViewSet
 
 from .models import Department
 from .serializers import DepartmentSerializer
 
 
-class DepartmentView(RetrieveAPIView):
-    serializer_class = DepartmentSerializer
-    queryset = Department.objects.all()
-
-
-class DepartmentListView(ListAPIView):
+class DepartmentViewset(ReadOnlyModelViewSet):
     serializer_class = DepartmentSerializer
     queryset = Department.objects.all()
