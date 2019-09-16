@@ -10,3 +10,7 @@ class ProductCategory(models.Model):
 
     class Meta:
         unique_together = ('category', 'product')
+
+    def __str__(self):
+        return f'<Product {self.product.name} ' \
+            f'- Category: {self.category.name}>'

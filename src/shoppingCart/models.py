@@ -10,3 +10,6 @@ class ShoppingCart(models.Model):
     quantity = models.IntegerField()
     buy_now = models.BooleanField(default=True)
     added_on = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f'<Shopping cart: {self.cart_id}>'

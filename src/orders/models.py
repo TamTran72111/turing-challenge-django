@@ -20,3 +20,6 @@ class Orders(models.Model):
     reference = models.CharField(max_length=50, null=True)
     shipping = models.ForeignKey(Shipping, on_delete=models.CASCADE)
     tax = models.ForeignKey(Tax, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f'<Order {self.id} on {self.created_on}'

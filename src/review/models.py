@@ -10,3 +10,6 @@ class Review(models.Model):
     review = models.TextField()
     rating = models.SmallIntegerField()
     created_on = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f'<Review of {self.customer.username} for {self.product.name}>'

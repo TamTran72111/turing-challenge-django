@@ -10,3 +10,6 @@ class Product(models.Model):
     image_2 = models.CharField(max_length=150, null=True)
     thumbnail = models.CharField(max_length=150, null=True)
     display = models.SmallIntegerField()
+
+    def __str__(self):
+        return f'<Product: {self.name}>'

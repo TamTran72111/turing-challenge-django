@@ -13,3 +13,7 @@ class ProductAttribute(models.Model):
 
     class Meta:
         unique_together = ('product', 'attribute_value')
+
+    def __str__(self):
+        return f'<Product {self.product.name}' \
+            f' - Attribute: {self.attribute_value.value}>'

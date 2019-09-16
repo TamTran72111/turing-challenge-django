@@ -25,3 +25,6 @@ class Customer(AbstractUser):
     day_phone = models.CharField(max_length=100, null=True)
     eve_phone = models.CharField(max_length=100, null=True)
     mob_phone = models.CharField(max_length=100, null=True)
+
+    def __str__(self):
+        return self.username

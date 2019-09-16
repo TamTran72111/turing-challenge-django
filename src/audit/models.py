@@ -8,3 +8,6 @@ class Audit(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     message = models.TextField()
     code = models.IntegerField()
+
+    def __str__(self):
+        return f'<Audit order {self.order.id} on {self.created_on}>'
