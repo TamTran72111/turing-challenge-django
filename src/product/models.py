@@ -1,5 +1,7 @@
 from django.db import models
 
+from utils import get_object_or_404
+
 
 class Product(models.Model):
     name = models.CharField(max_length=100)
@@ -13,3 +15,8 @@ class Product(models.Model):
 
     def __str__(self):
         return f'<Product: {self.name}>'
+
+    @classmethod
+    def get_reviews_from_id(cls, product_id):
+        product = get_object_or_404(cls, id=product_id)
+        return product.reviews.all()

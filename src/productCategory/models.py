@@ -1,7 +1,8 @@
 from django.db import models
 
-from utils import get_list_or_404
+from utils import get_list_or_404, get_object_or_404
 from category.models import Category
+from department.models import Department
 from product.models import Product
 
 
@@ -19,7 +20,16 @@ class ProductCategory(models.Model):
     @classmethod
     def get_categories_from_product_id(cls, product_id):
         productCategories = get_list_or_404(cls, product__id=product_id)
-        print(productCategories)
-        categories = [pc.category for pc in productCategories]
-        print(categories)
-        return categories
+        return [pc.category for pc in productCategories]
+
+    @classmethod
+    def get_products_from_category_id(cls, category_id):
+        productCategories = get_list_or_404(cls, category__id=category_id)
+        return [pc.product for pc in productCategories]
+
+    @classmethod
+    def get_products_from_department_id(cls, department_id):
+        department = get_object_or_404(Department, id=department_id)
+        categories = department.categories.all()
+        productCategories = get_list_or_404(cls, category__in=categories)
+        return [pc.product for pc in productCategories]
