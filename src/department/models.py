@@ -1,5 +1,6 @@
 from django.db import models
-from rest_framework.generics import get_object_or_404
+
+from utils import get_object_or_404
 
 
 class Department(models.Model):
