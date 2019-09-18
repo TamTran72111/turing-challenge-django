@@ -1,5 +1,3 @@
-from collections import OrderedDict
-
 from rest_framework.generics import ListAPIView, RetrieveAPIView
 from rest_framework.generics import ListCreateAPIView
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
@@ -7,12 +5,18 @@ from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from category.serializers import ProductLocationSerializer
 from productCategory.models import ProductCategory
 from review.serializers import ReviewSerializer
+from utils.decorators import add_count_to_list
+
 from .models import Product
 from .serializers import SingleProductSerializer, ProductsSerializer
 
 
 class ProductList(ListAPIView):
     serializer_class = ProductsSerializer
+
+    @add_count_to_list
+    def list(self, request, *args, **kwargs):
+        return super().list(request, *args, **kwargs)
 
 
 class ProductListView(ProductList):
