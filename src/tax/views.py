@@ -1,3 +1,9 @@
-from django.shortcuts import render
+from rest_framework.viewsets import ReadOnlyModelViewSet
 
-# Create your views here.
+from .models import Tax
+from .serializers import TaxSerializer
+
+
+class TaxViewset(ReadOnlyModelViewSet):
+    serializer_class = TaxSerializer
+    queryset = Tax.objects.all()
