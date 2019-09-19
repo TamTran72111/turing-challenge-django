@@ -1,8 +1,9 @@
 from django.db import models
 
 from customer.models import Customer
-from shipping.models import Shipping
 from tax.models import Tax
+from shipping.models import Shipping
+from shoppingCart.models import ShoppingCart
 
 
 class Orders(models.Model):
@@ -23,3 +24,19 @@ class Orders(models.Model):
 
     def __str__(self):
         return f'<Order {self.id} on {self.created_on}'
+
+    def add_details(self, cart_id):
+        cart_items = ShoppingCart.objects.filter(cart_id=cart_id)
+        for cart_item in cart_items:
+            self.orderdetail_set.create(
+                **(self.__get_orderDetail_dict(cart_item)))
+        for cart_item in cart_items:
+            cart_item.delete()
+
+    def __get_orderDetail_dict(self, cart_item):
+        return {
+            'order': self,
+            'product': cart_item.product, 'attributes': cart_item.attributes,
+            'product_name': cart_item.product.name, 'quantity': cart_item.quantity,
+            'unit_cost': cart_item.product.price
+        }
