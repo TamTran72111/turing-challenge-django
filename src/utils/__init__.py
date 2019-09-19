@@ -1,5 +1,6 @@
-from rest_framework.generics import ValidationError, get_object_or_404
+from django.http import Http404
 from django.shortcuts import get_list_or_404 as _get_list_or_404
+from rest_framework.generics import ValidationError, get_object_or_404
 
 
 def get_list_or_404(queryset, *filter_args, **filter_kwargs):
